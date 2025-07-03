@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.jms.annotation.EnableJms;
-import org.springframework.jms.annotation.JmsListener;
+// import org.springframework.jms.annotation.EnableJms;
+// import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 
@@ -29,7 +29,6 @@ import com.azure.messaging.servicebus.*;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
-@EnableJms
 public class DemoConsumerApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(DemoConsumerApplication.class);
