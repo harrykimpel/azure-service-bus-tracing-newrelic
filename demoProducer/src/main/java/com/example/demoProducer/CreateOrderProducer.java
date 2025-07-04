@@ -67,11 +67,6 @@ public class CreateOrderProducer {
 
                 // ConcurrentHashMapHeaders provides a concrete implementation of
                 // com.newrelic.api.agent.Headers
-                com.newrelic.api.agent.Headers distributedTraceHeaders = ConcurrentHashMapHeaders
-                                .build(HeaderType.MESSAGE);
-                NewRelic.getAgent().getTransaction().acceptDistributedTraceHeaders(TransportType.AMQP,
-                                distributedTraceHeaders);
-
                 com.newrelic.api.agent.Headers dtHeaders = ConcurrentHashMapHeaders.build(HeaderType.MESSAGE);
                 NewRelic.getAgent().getTransaction().insertDistributedTraceHeaders(dtHeaders);
 

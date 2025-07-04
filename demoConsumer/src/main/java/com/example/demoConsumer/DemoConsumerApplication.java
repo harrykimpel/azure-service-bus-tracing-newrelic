@@ -7,13 +7,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 // import org.springframework.jms.annotation.EnableJms;
 // import org.springframework.jms.annotation.JmsListener;
-import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageHeaders;
 
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.qpid.jms.message.JmsBytesMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.demoProducer.Order;
@@ -24,7 +21,6 @@ import com.newrelic.api.agent.HeaderType;
 import com.newrelic.api.agent.NewRelic;
 import com.newrelic.api.agent.Headers;
 
-import jakarta.jms.BytesMessage;
 import com.azure.messaging.servicebus.*;
 import java.util.concurrent.TimeUnit;
 
@@ -82,13 +78,13 @@ public class DemoConsumerApplication {
 		}
 
 		Headers distributedTraceHeaders = ConcurrentHashMapHeaders.build(HeaderType.MESSAGE);
-		for (Object key : message.getApplicationProperties().values()) {
-			Object value = message.getApplicationProperties().get(key);
-			if (value != null) {
-				// distributedTraceHeaders.addHeader(key, value.toString());
-				LOGGER.info("key header: {}", value);
-			}
-		}
+		// for (Object key : message.getApplicationProperties().values()) {
+		// Object value = message.getApplicationProperties().get(key);
+		// if (value != null) {
+		// // distributedTraceHeaders.addHeader(key, value.toString());
+		// LOGGER.info("key header: {}", value);
+		// }
+		// }
 		Object traceParent = message.getApplicationProperties().get("traceparent");
 		LOGGER.info("traceparent header: {}", traceParent);
 		if (traceParent != null) {
